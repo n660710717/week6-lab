@@ -3,8 +3,11 @@ package store
 import (
     "context"
     "errors"
+<<<<<<< HEAD
     "time"
 
+=======
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
 	"github.com/jackc/pgx/v5"
 
     "github.com/jackc/pgx/v5/pgconn"
@@ -17,7 +20,10 @@ type Member struct {
     Email        string `json:"email"`
     DisplayName  string `json:"displayName"`
     Role         string `json:"role"`
+<<<<<<< HEAD
     CreatedAt    *time.Time `json:"createdAt,omitempty"` // มีเฉพาะตอน list ให้ admin ดู
+=======
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
     PasswordHash string `json:"-"` // ไม่มีวันออกไปกับ JSON
 }
 
@@ -44,6 +50,7 @@ func (s *Store) MemberByEmail(ctx context.Context, email string) (Member, error)
         return Member{}, ErrNotFound
     }
     return m, err
+<<<<<<< HEAD
 }
 
 // MemberByID ใช้กับ GET /api/me: เลขมาจากตั๋วที่ตรวจแล้ว
@@ -91,4 +98,6 @@ func (s *Store) UpdateMemberRole(ctx context.Context, id int64, role string) (Me
         return Member{}, ErrNotFound
     }
     return m, err
+=======
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
 }

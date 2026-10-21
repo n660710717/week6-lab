@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package handler
 
 import (
@@ -232,3 +233,6 @@ func (h *Handler) AdminDeleteMovie(w http.ResponseWriter, r *http.Request) {
     }
     w.WriteHeader(http.StatusNoContent) // ลบแล้ว ไม่มีอะไรให้ส่งกลับ
 }
+=======
+package handler
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b

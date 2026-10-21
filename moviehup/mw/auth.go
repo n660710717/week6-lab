@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package mw
 
 import (
@@ -65,3 +66,6 @@ func RequireRole(role string, next http.HandlerFunc) http.HandlerFunc {
         next(w, r)
     }
 }
+=======
+package mw
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b

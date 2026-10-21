@@ -8,9 +8,13 @@ import (
     "time"
 
     "strings"
+<<<<<<< HEAD
     
     "github.com/jackc/pgx/v5/pgxpool"
     _ "github.com/joho/godotenv/autoload" // โหลด .env ให้เองถ้ามีไฟล์ (ในเครื่อง) บน Render ไม่มีไฟล์ก็เงียบ
+=======
+    "github.com/jackc/pgx/v5/pgxpool"
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
 
     "moviehub/auth"
     "moviehub/handler"
@@ -35,6 +39,7 @@ func main() {
     tickets := &auth.Issuer{Secret: []byte(secret), TTL: time.Hour}
     h := &handler.Handler{Store: &store.Store{Pool: pool}, Tickets: tickets}
 
+<<<<<<< HEAD
      // login = ต้องมีตั๋ว, admin = ต้องมีตั๋วและบทบาทเป็น admin (ตรวจตั๋วก่อนเสมอ ค่อยดูบทบาท)
     login := func(next http.HandlerFunc) http.HandlerFunc { return mw.RequireLogin(tickets, next) }
     admin := func(next http.HandlerFunc) http.HandlerFunc { return login(mw.RequireRole("admin", next)) }
@@ -44,10 +49,16 @@ func main() {
     mux.HandleFunc("POST /api/auth/login", h.Login)
     mux.HandleFunc("GET /api/me", login(h.Me))
     mux.HandleFunc("GET /api/genres", h.Genres)
+=======
+    mux := http.NewServeMux()
+    mux.HandleFunc("POST /api/auth/register", h.Register)
+    mux.HandleFunc("POST /api/auth/login", h.Login)
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
     mux.HandleFunc("GET /api/movies", h.SearchMovies)
     mux.HandleFunc("GET /api/movies/{id}", h.GetMovie)
     mux.HandleFunc("GET /api/movies/{id}/reviews", h.ListReviews)
 
+<<<<<<< HEAD
       // หลังบ้าน: ทุกเส้นทางใต้ /api/admin ผ่าน admin(...) ไม่มีข้อยกเว้น
     mux.HandleFunc("GET /api/admin/stats", admin(h.AdminStats))
     mux.HandleFunc("GET /api/admin/members", admin(h.AdminMembers))
@@ -67,3 +78,9 @@ func main() {
     log.Println("MovieHub API ฟังอยู่ที่ :"+port, "ต้อนรับ", origins)
     log.Fatal(http.ListenAndServe(":"+port, mw.Logging(mw.CORS(origins, mux))))
 }
+=======
+    origins := strings.Split(os.Getenv("ALLOWED_ORIGINS"), ",")
+    log.Println("MovieHub API ฟังอยู่ที่ :8080 ต้อนรับ", origins)
+    log.Fatal(http.ListenAndServe(":8080", mw.Logging(mw.CORS(origins, mux))))
+}
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b

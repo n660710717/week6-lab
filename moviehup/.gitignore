@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 .jwt_secret
 
 # API key ห้ามขึ้น GitHub
 .env
 .env.*.local
+=======
+.jwt_secret
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b

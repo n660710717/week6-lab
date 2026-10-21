@@ -8,7 +8,10 @@ import (
     "unicode/utf8"
 
     "moviehub/auth"
+<<<<<<< HEAD
     "moviehub/mw"
+=======
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
     "moviehub/store"
 )
 
@@ -85,6 +88,7 @@ func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
         return
     }
     writeJSON(w, http.StatusOK, map[string]any{"token": token, "member": m})
+<<<<<<< HEAD
 }
 
 // Me (ด่านที่ 4) ตอบข้อมูลของคนที่ถือตั๋ว เลขสมาชิกมาจากตั๋วที่ RequireLogin ตรวจแล้วเท่านั้น
@@ -104,4 +108,6 @@ func (h *Handler) Me(w http.ResponseWriter, r *http.Request) {
         return
     }
     writeJSON(w, http.StatusOK, m)
+=======
+>>>>>>> f2796da98d52bb8783ad71bd3b21d4f9f620f45b
 }
